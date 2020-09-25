@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
         }
         else{
-            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
         }
         else{
-            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
         }
 
     }
