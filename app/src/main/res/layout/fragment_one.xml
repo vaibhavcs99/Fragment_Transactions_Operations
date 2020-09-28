@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:background="#1C471D"
         android:backgroundTint="#CDDC39"
-        android:text="This is fragment one" />
+        android:text="This is fragment one"
+        android:textSize="50sp"/>
 
 </FrameLayout>

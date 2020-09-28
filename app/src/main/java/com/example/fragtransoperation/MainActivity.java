@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentOne fragmentOne = new FragmentOne();
     FragmentTransaction transaction = manager.beginTransaction();
-    transaction.add(R.id.fragment_place,fragmentOne,"A");
-    transaction.commit();
+    transaction.add(R.id.fragment_place,fragmentOne,"A").addToBackStack(null).commit();
 
     }
 
@@ -32,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTwo fragmentTwo = new FragmentTwo();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.fragment_place,fragmentTwo,"B");
-        transaction.commit();
+        transaction.add(R.id.fragment_place,fragmentTwo,"B").addToBackStack(null).commit();
 
     }
 
@@ -43,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
 
         if(fragmentOne != null){
-            transaction.remove(fragmentOne);
-            transaction.commit();
+            transaction.remove(fragmentOne).addToBackStack(null).commit();
         }
         else{
             Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
@@ -58,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
 
         if (fragmentTwo != null){
-            transaction.remove(fragmentTwo);
-            transaction.commit();
+            transaction.remove(fragmentTwo).addToBackStack(null).commit();
         }
         else{
             Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
@@ -71,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTwo fragmentTwo = new FragmentTwo();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment_place,fragmentTwo,"B");
-        transaction.commit();
+        transaction.replace(R.id.fragment_place,fragmentTwo,"B").addToBackStack(null).commit();
 
     }
 
@@ -80,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentOne fragmentOne = new FragmentOne();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment_place,fragmentOne,"A");
-        transaction.commit();
+        transaction.replace(R.id.fragment_place,fragmentOne,"A").addToBackStack(null).commit();
 
     }
 
@@ -92,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(fragmentOne != null){
 
-            transaction.attach(fragmentOne);
-            transaction.commit();
+            transaction.attach(fragmentOne).addToBackStack(null).commit();
         }
         else{
             Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
@@ -108,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(fragmentOne != null){
 
-            transaction.detach(fragmentOne);
-            transaction.commit();
+            transaction.detach(fragmentOne).addToBackStack(null).commit();
         }
         else{
             Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
