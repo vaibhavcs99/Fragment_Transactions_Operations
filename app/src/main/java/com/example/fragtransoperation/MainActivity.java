@@ -19,93 +19,102 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void addA(View view){
-
-    FragmentOne fragmentOne = new FragmentOne();
-    FragmentTransaction transaction = manager.beginTransaction();
-    transaction.add(R.id.fragment_place,fragmentOne,"A").addToBackStack(null).commit();
-
-    }
-
-    public void addB(View view){
-
-        FragmentTwo fragmentTwo = new FragmentTwo();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.fragment_place,fragmentTwo,"B").addToBackStack(null).commit();
-
-    }
-
-    public void removeA(View view){
-
-        Fragment fragmentOne =  manager.findFragmentByTag("A");
-        FragmentTransaction transaction = manager.beginTransaction();
-
-        if(fragmentOne != null){
-            transaction.remove(fragmentOne).addToBackStack(null).commit();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    public void removeB(View view){
-
-        Fragment fragmentTwo = manager.findFragmentByTag("B");
-        FragmentTransaction transaction = manager.beginTransaction();
-
-        if (fragmentTwo != null){
-            transaction.remove(fragmentTwo).addToBackStack(null).commit();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    public void ReplaceAtoB(View view){
-
-        FragmentTwo fragmentTwo = new FragmentTwo();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment_place,fragmentTwo,"B").addToBackStack(null).commit();
-
-    }
-
-    public void ReplaceBtoA(View view){
+    public void addA(View view) {
 
         FragmentOne fragmentOne = new FragmentOne();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment_place,fragmentOne,"A").addToBackStack(null).commit();
+        transaction.add(R.id.fragment_place, fragmentOne, "A").addToBackStack("addA").commit();
 
     }
 
-    public void attachA(View view){
+    public void addB(View view) {
 
-        Fragment fragmentOne =  manager.findFragmentByTag("A");
+        FragmentTwo fragmentTwo = new FragmentTwo();
         FragmentTransaction transaction = manager.beginTransaction();
-
-        if(fragmentOne != null){
-
-            transaction.attach(fragmentOne).addToBackStack(null).commit();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
-        }
+        transaction.add(R.id.fragment_place, fragmentTwo, "B").addToBackStack("addB").commit();
 
     }
 
-    public void detachA(View view){
+    public void addC(View view){
+        FragmentThree fragmentThree = new FragmentThree();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment_place,fragmentThree,"C").addToBackStack("addC").commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        manager.popBackStack("addA",0);
+    }
+
+    public void removeA(View view) {
 
         Fragment fragmentOne = manager.findFragmentByTag("A");
         FragmentTransaction transaction = manager.beginTransaction();
 
-        if(fragmentOne != null){
-
-            transaction.detach(fragmentOne).addToBackStack(null).commit();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Invalid Selection",Toast.LENGTH_SHORT).show();
+        if (fragmentOne != null) {
+            transaction.remove(fragmentOne).addToBackStack(null).commit();
+        } else {
+            Toast.makeText(getApplicationContext(), "Invalid Selection", Toast.LENGTH_SHORT).show();
         }
 
     }
+
+    public void removeB(View view) {
+
+        Fragment fragmentTwo = manager.findFragmentByTag("B");
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        if (fragmentTwo != null) {
+            transaction.remove(fragmentTwo).addToBackStack(null).commit();
+        } else {
+            Toast.makeText(getApplicationContext(), "Invalid Selection", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void ReplaceAtoB(View view) {
+
+        FragmentTwo fragmentTwo = new FragmentTwo();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_place, fragmentTwo, "B").addToBackStack(null).commit();
+
+    }
+
+    public void ReplaceBtoA(View view) {
+
+        FragmentOne fragmentOne = new FragmentOne();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_place, fragmentOne, "A").addToBackStack(null).commit();
+
+    }
+
+    public void attachA(View view) {
+
+        Fragment fragmentOne = manager.findFragmentByTag("A");
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        if (fragmentOne != null) {
+
+            transaction.attach(fragmentOne).addToBackStack(null).commit();
+        } else {
+            Toast.makeText(getApplicationContext(), "Invalid Selection", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void detachA(View view) {
+
+        Fragment fragmentOne = manager.findFragmentByTag("A");
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        if (fragmentOne != null) {
+
+            transaction.detach(fragmentOne).addToBackStack(null).commit();
+        } else {
+            Toast.makeText(getApplicationContext(), "Invalid Selection", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
